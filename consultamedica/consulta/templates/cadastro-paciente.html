@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block titulo %}Pacientes{% endblock %}
+
+{% block conteudo %} 
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1>Cadastro de Pacientes</h1>
+<form method="POST">
+	{%csrf_token%}
+	{{form}}
+	<button type="submit">Salvar</button>
+</form>
+
+</body>
+</html>
+{% endblock %}

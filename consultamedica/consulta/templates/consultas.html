@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block titulo %}Consultas_Medico{% endblock %}
+
+{% block conteudo %} 
+
+
+      <legend>Consultas</legend>
+
+        <div class="row">
+          <div class="col-md-2">
+            <a href="django-model-forms"><button type="button" class="btn btn-primary glyphicon glyphicon-plus-sign"> Novo</button></a>
+          </div>
+          <div class="col-md-4">
+            <div class="input-group">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">Pesquisar</button>
+                </span>
+                <input type="text" class="form-control" placeholder="Procurando por...">
+              </div><!-- /input-group -->
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+          <br>
+            <div class="panel panel-primary">
+              <!-- Default panel contents -->
+              <div class="panel-heading">Consultas</div>
+
+              <!-- Table -->
+              <table class="table">
+                  <tr>
+                    <th>Id</th> 
+                    <th>CRM</th>
+                    <th>CPF</th>
+                    <th>Inicio</th>
+                    <th>Final</th>
+                  </tr>
+                  {%for consulta in consultas%}
+                  <tr>
+                    <td>{{consulta.idconsulta}}</td>                  
+                    <td>{{consulta.crm}}</td>
+                    <td>{{consulta.cpfpaciente}}</td>
+                    <td>{{consulta.horario_inicial}}</td> 
+                    <td>{{consulta.horario_final}}</td>   
+                    <td ><a href=""class="glyphicon glyphicon-edit"></a></td>
+                    <td ><a href=""class="glyphicon glyphicon-list-alt"></a></td>               
+                  </tr>
+                  {% endfor %}
+              </table>
+            </div>
+
+
+          </div>
+        </div>
+
+{% endblock %}
