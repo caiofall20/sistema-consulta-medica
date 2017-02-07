@@ -7,27 +7,29 @@ from consulta.models import Consulta
 from consulta.forms import ConsultaForm
 from consulta.forms import PacienteForm
 from consulta.forms import MedicoForm
+from django.contrib.auth.decorators import login_required,permission_required
 # Create your views here.
+@login_required(login_url='login')
 def home(request):
     template = loader.get_template('index.html')
     context = RequestContext(request)
     return HttpResponse(template.render(context))
 
-
+@login_required(login_url='login')
 def pacientes(request):
 	pacientes = Paciente.objects.all()
 	teste = 'Pacientes'
 	template = loader.get_template('pacientes.html')
 	context = RequestContext(request,{'pacientes':pacientes})
 	return HttpResponse(template.render(context))
-
+@login_required(login_url='login')
 def medicos(request):
 	medicos = Medico.objects.all()
 	teste = 'Medicos'
 	template = loader.get_template('medicos.html')
 	context = RequestContext(request,{'medicos':medicos})
 	return HttpResponse(template.render(context))
-
+@login_required(login_url='login')
 def consultas(request):
 	consultas = Consulta.objects.all()
 	teste = 'Consultas'

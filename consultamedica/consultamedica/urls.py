@@ -16,12 +16,15 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from consulta.views import model_forms
-
+from django.contrib.auth.views import login,logout
+from consulta.views import *
 urlpatterns = [
 	url(r'^',include('consulta.urls')),
 	url(r'^admin/', admin.site.urls),
     url(r'medico_forms$', model_forms, name='medico_forms'),
 	url(r'^django-model-forms/$', model_forms, name='consulta_model_forms_django'),
     url(r'^paciente_forms$', model_forms, name='paciente_forms'),
-   
+    url(r'^login/',login,{'template_name':'utils/login.html','redirect_field_name':'home'},name='login'),
+    url(r'^logout/$', logout, {'next_page': 'login'},name='logout'),
+    url(r'^accounts/profile', home, name = 'home'),
    ]
